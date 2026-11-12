@@ -18,7 +18,8 @@ An AI wedding coordinator that delegates to flight, venue and playlist specialis
 Requires Python 3.11 or 3.12, Git, and API keys for Groq and Tavily.
 
 ```powershell
-cd wedding-planner-agent
+git clone https://github.com/mohamedhazem889/Wedding-Planner-Agent.git
+cd Wedding-Planner-Agent
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -52,17 +53,16 @@ PowerShell quoting can vary; using Studio/AgentChat UI is easier for interactive
 
 ## 3. AgentChat UI (local)
 
-Use the official UI source: https://github.com/langchain-ai/agent-chat-ui
+The included `agent-chat-ui/` frontend is based on [LangChain Agent Chat UI](https://github.com/langchain-ai/agent-chat-ui). Its MIT license is included in `agent-chat-ui/LICENSE`.
 
 ```powershell
-cd ..
-git clone https://github.com/langchain-ai/agent-chat-ui.git
 cd agent-chat-ui
+Copy-Item .env.example .env.local
 npm install
 npm run dev
 ```
 
-In the UI's connection settings, enter the LangGraph Server URL (usually `http://localhost:2024`) and graph/assistant ID `wedding_planner`. For local dev without auth, leave the API key empty where supported. Check the UI repo's current README for its supported environment variables and setup options; they may change by release.
+Set `NEXT_PUBLIC_ASSISTANT_ID=wedding_planner` in `agent-chat-ui/.env.local`. In the UI's connection settings, enter the LangGraph Server URL (usually `http://localhost:2024`) and graph/assistant ID `wedding_planner`. For local dev without auth, leave the API key empty where supported. Check the UI repo's current README for its supported environment variables and setup options; they may change by release.
 
 Use **New Chat** for a new thread and return to earlier threads via the UI's thread history where supported. The actual persistence comes from the server, not the browser.
 
@@ -119,7 +119,7 @@ python -m pytest -q
 python -m compileall -q app tests
 ```
 
-Then run `git status --short` and `git diff --cached --name-only` to review staged files. Do not publish `.env`, local logs, traces, or private chat records. The repository does not contain the AgentChat UI source; clone the official frontend separately.
+Then run `git status --short` and `git diff --cached --name-only` to review staged files. Do not publish `.env`, local logs, traces, or private chat records. The AgentChat UI source is included in `agent-chat-ui/`; its dependencies and local environment files are excluded from Git.
 
 **Status of prior manual testing:** The developer reported that all four local chat-history tests passed and the coordinator invoked state, venue, playlist, and flight tools. Flight lookup returned requests for a departure date instead of actual itineraries; that remains a known limitation. These reports are not automated integration tests.
 

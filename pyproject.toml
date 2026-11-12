@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wedding-planner-agent"
+version = "0.1.0"
+description = "LangGraph multi-agent wedding planner"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "langchain>=1.0,<2",
+  "langgraph>=1.0,<2",
+  "langgraph-cli[inmem]>=0.4,<1",
+  "langchain-mcp-adapters>=0.1,<1",
+  "langchain-openai>=1.0,<2",
+  "tavily-python>=0.5,<1",
+  "python-dotenv>=1,<2"
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
