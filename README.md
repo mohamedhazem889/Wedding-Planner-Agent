@@ -101,13 +101,6 @@ Self-hosted LangGraph production may require additional infrastructure and licen
 - [ ] Old chat survives restart on persistent production deployment
 - [ ] API keys are not committed or exposed in browser
 
-## Known limitations
-
-- Groq model tool-call support can vary by model/provider version; validate all four tools.
-- Flight tool names and remote MCP behavior can change; test before deployment.
-- The bundled music catalog is static and may not contain every genre.
-- SQLite query protection includes read-only connection, `query_only` pragma, single-SELECT validation, and result limits; do not expose arbitrary SQL to untrusted public users without additional hardening.
-- No real payment, reservation or vendor booking is performed.
 
 ## 7. Offline validation before pushing
 
