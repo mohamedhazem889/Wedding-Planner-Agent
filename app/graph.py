@@ -1,8 +1,3 @@
-"""LangGraph-compatible Wedding Planner graph.
-
-The LangGraph server owns checkpointing/thread persistence; do not attach a
-second checkpointer here. Specialist agents are invoked from coordinator tools.
-"""
 import os
 import re
 import sqlite3
