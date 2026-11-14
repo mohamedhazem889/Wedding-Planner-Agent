@@ -100,20 +100,6 @@ Self-hosted LangGraph production may require additional infrastructure and licen
 - [ ] A new chat has a new thread ID
 - [ ] Old chat survives restart on persistent production deployment
 - [ ] API keys are not committed or exposed in browser
-
-
-## 7. Offline validation before pushing
-
-With your virtual environment active, run:
-
-```powershell
-python -m pip install pytest
-python -m pytest -q
-python -m compileall -q app tests
-```
-
-Then run `git status --short` and `git diff --cached --name-only` to review staged files. Do not publish `.env`, local logs, traces, or private chat records. The AgentChat UI source is included in `agent-chat-ui/`; its dependencies and local environment files are excluded from Git.
-
 **Status of prior manual testing:** The developer reported that all four local chat-history tests passed and the coordinator invoked state, venue, playlist, and flight tools. Flight lookup returned requests for a departure date instead of actual itineraries; that remains a known limitation. These reports are not automated integration tests.
 
 **Database redistribution:** Verify the Chinook sample database's redistribution terms before making this repository public. If uncertain, omit `resources/Chinook.db` from the public repository and document where to obtain it; the bundled database is currently required for playlist recommendations.
