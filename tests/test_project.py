@@ -1,4 +1,3 @@
-"""Offline repository smoke tests (no API keys or network required)."""
 import json
 import sqlite3
 from pathlib import Path
