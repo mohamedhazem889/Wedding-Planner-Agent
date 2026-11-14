@@ -1,4 +1,3 @@
-"""Database-only smoke tests (no LLM credentials required)."""
 import sqlite3
 from pathlib import Path
 
